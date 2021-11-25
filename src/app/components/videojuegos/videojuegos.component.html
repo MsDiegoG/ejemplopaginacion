@@ -1,0 +1,34 @@
+<main role="main">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Ejemplo Paginación Videojuegos</h1>
+        <p class="lead text-muted">Aquí mostraremos una manera más cómoda de gestionar los datos implementados en la web</p>
+      </div>
+    </section>
+  
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let vid of videojuegos | paginate: {itemsPerPage: 3, currentPage: page} ">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="{{vid.thumbnail}}" data-holder-rendered="true"/>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                {{vid.title}}
+                            </h4>
+                            <p class="card-text">
+                                {{vid.short_description}}
+                            </p>
+                            <p class="card-text">
+                                Plataforma: {{vid.platform}}
+                            </p>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
